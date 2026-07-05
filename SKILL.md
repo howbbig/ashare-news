@@ -15,6 +15,12 @@ When triggered, follow these steps:
    ```bash
    node scripts/fetch_news.cjs
    ```
-   *Note: The script automatically handles prepending the news and adding the execution timestamp to `/home/zhihaotan/work_logs/ashare_news.md`.*
+   *Note: The script automatically handles prepending the news and adding the execution timestamp to `ashare_news.md` in the workspace root. You can override the path with the `ASHARE_NEWS_FILE` environment variable.*
 
-2. **Report Success:** Print out the fetched news items and market indices in your chat response so the user can read them directly. Also notify the user that the news has been successfully prepended to `/home/zhihaotan/work_logs/ashare_news.md`.
+2. **Open the Result File:** Open the generated Markdown file in Sublime Text.
+   ```bash
+   open -a "Sublime Text" "<output_file_path>"
+   ```
+   Replace `<output_file_path>` with the actual path resolved from `ASHARE_NEWS_FILE` or the default (`skills/ashare_news.md` relative to workspace).
+
+3. **Report Success:** Print out the fetched news items and market indices in your chat response so the user can read them directly. Also notify the user that the news has been successfully prepended to the configured output file (default: workspace `ashare_news.md`).
