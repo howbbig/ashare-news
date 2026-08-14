@@ -92,7 +92,7 @@ async function main() {
     let startTimestamp = Math.floor(today8AM.getTime() / 1000);
     let lastFetchTimeStr = null;
 
-    const targetFile = path.resolve('/home/zhihaotan/work_logs', 'ashare_news.md');
+    const targetFile = path.resolve(process.env.ASHARE_NEWS_FILE || path.join(__dirname, '..', 'ashare_news.md'));
     if (fs.existsSync(targetFile)) {
       const content = fs.readFileSync(targetFile, 'utf8');
       const match = content.match(/> Skill executed at:\s*([^\n(]+)/);
